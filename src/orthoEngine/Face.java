@@ -6,40 +6,48 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 
 public class Face extends ZGetter {
-  Node[] n;
-  
-  public Color c;
-  
-  public Face(Node[] n, Color c) {
-    this.n = n;
-    this.c = c;
-  }
-  
-  public void setColor(Color c) {
-    this.c = c;
-  }
-  
-  public double averageZ() {
-    double tmp = 0.0D;
-    for (int i = 0; i < this.n.length; i++)
-      tmp += (this.n[i]).z; 
-    tmp /= this.n.length;
-    return tmp;
-  }
-  
-  public void draw(Graphics2D g) {
-    Polygon p = new Polygon();
-    for (int i = 0; i < this.n.length; i++)
-      p.addPoint((int)(this.n[i]).x, (int)(this.n[i]).y); 
-    g.setColor(this.c);
-    g.fill(p);
-  }
-  
-  public void draw(Graphics g) {
-    Polygon p = new Polygon();
-    for (int i = 0; i < this.n.length; i++)
-      p.addPoint((int)(this.n[i]).x, (int)(this.n[i]).y); 
-    g.setColor(this.c);
-    g.drawPolygon(p);
-  }
+
+    Node[] n;
+
+    public Color c;
+
+    public Face(Node[] n, Color c) {
+        this.n = n;
+        this.c = c;
+    }
+
+    @Override
+    public void setColor(Color c) {
+        this.c = c;
+    }
+
+    @Override
+    public double averageZ() {
+        double tmp = 0.0D;
+        for (Node n1 : this.n) {
+            tmp += (n1).z;
+        }
+        tmp /= this.n.length;
+        return tmp;
+    }
+
+    @Override
+    public void draw(Graphics2D g) {
+        Polygon p = new Polygon();
+        for (Node n1 : this.n) {
+            p.addPoint((int) (n1).x, (int) (n1).y);
+        }
+        g.setColor(this.c);
+        g.fill(p);
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        Polygon p = new Polygon();
+        for (Node n1 : this.n) {
+            p.addPoint((int) (n1).x, (int) (n1).y);
+        }
+        g.setColor(this.c);
+        g.drawPolygon(p);
+    }
 }
