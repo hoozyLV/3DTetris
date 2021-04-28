@@ -103,8 +103,9 @@ public class Game extends CubeTransform implements KeyListener {
             g.setFont(Initializer.customFontLarge);
             g.drawString("GAME OVER", 420, 320);
             g.drawString("SCORE: " + score, 440, 400);
-            g.drawString("PRESS ENTER TO START OVER", 320, 480);
-
+            g.setFont(Initializer.customFont);
+            g.setColor(Color.BLUE);
+            g.drawString("PRESS ENTER TO START OVER", 460, 530);
             if (this.ENTER) {
                 score = 0;
 
